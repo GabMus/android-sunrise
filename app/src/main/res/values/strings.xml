@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name" translatable="false">Sunrise</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="action_refresh" translatable="false">[DEBUG] Refresh</string>
+    <string name="loading_message">Fetching forecast...</string>
+    <string name="title_activity_detail">Details</string>
+</resources>
