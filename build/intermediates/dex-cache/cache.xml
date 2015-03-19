@@ -9,18 +9,18 @@
         <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/classes-61fef8502a07de250cc651126b0f5549837bbf11.jar" />
     </item>
     <item
-        jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
-        jumboMode="false"
-        revision="22.0.0"
-        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
-        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-616a6db84fb96bd5579ca3caa60f0003d959e016.jar" />
-    </item>
-    <item
         jar="/home/gabmus/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="22.0.0"
         sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
         <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-7914f696dbfc5927ee0cc90dbfb5cd9ff4c883c8.jar" />
+    </item>
+    <item
+        jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="b5b92f469d515a13d778900f6d50c03d12f35504">
+        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-616a6db84fb96bd5579ca3caa60f0003d959e016.jar" />
     </item>
 
 </items>

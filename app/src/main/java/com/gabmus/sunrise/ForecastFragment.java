@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.preference.PreferenceManager;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -50,7 +52,6 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
         setHasOptionsMenu(true);
     }
 
@@ -61,27 +62,23 @@ public class ForecastFragment extends Fragment {
     }
 
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        inflater.inflate(R.menu.forecastfragment, menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        int id=item.getItemId();
-        if (id==R.id.action_refresh) {
-            new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default)));
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
-
-    @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
 
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
+
+
+
+        final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_container);
+        swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default)));
+                swipeLayout.setRefreshing(false);
+            }});
+
+
 
         forecastAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_forecast,R.id.list_item_forecast_textview);
         ListView forecastList = (ListView) rootView.findViewById(R.id.listview_forecast);
@@ -105,36 +102,12 @@ public class ForecastFragment extends Fragment {
     private class FetchForecastTask extends AsyncTask<String, Void, String[]>
     {
 
-        private ProgressDialog dial = new ProgressDialog(getActivity());
-
-        private void showLoadingDialog() {
-            if (dial == null) {
-                dial = new ProgressDialog(getActivity());
-
-            }
-            dial.show();
-            dial.setMessage(getString(R.string.loading_message));
-        }
-
-        public void dismissLoadingDialog() {
-
-            if (dial != null && dial.isShowing()) {
-                dial.dismiss();
-            }
-        }
-
-        @Override
-        protected void onPreExecute() {
-            showLoadingDialog();
-        }
-
         @Override
         protected void onPostExecute(String[] rawData) {
             List<String> forecastData = new ArrayList<String>(Arrays.asList(rawData));
             forecastAdapter.clear();
             forecastAdapter.addAll(forecastData);
             //forecastAdapter.notifyDataSetChanged(); //not necessary: built in the ArrayAdapter class
-            dismissLoadingDialog();
         }
 
         private String getReadableDateString(long time){
