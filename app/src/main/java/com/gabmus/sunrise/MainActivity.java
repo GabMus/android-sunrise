@@ -60,10 +60,7 @@ public class MainActivity extends Activity {
                 List<Address> addresses = geocoder.getFromLocationName(zip, 1);
                 if (addresses != null && !addresses.isEmpty()) {
                     Address address = addresses.get(0);
-
-                    //Uri geotag = Uri.parse(String.format("geo:%f,%f?z=10", address.getLatitude(), address.getLongitude()));
-                    String geotagStr="geo:"+Double.toString(address.getLatitude())+","+Double.toString(address.getLongitude())+"?z=11";
-                    Uri geotag = Uri.parse(geotagStr);
+                    Uri geotag = Uri.parse("geo:"+Double.toString(address.getLatitude())+","+Double.toString(address.getLongitude())+"?z=11");
                     Toast.makeText(this, geotag.toString(), Toast.LENGTH_SHORT).show();
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW);
                     mapIntent.setData(geotag);
