@@ -3,7 +3,6 @@ package com.gabmus.sunrise;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -70,7 +69,7 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         if (id==R.id.action_refresh) {
-            new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("location_key",""));
+            new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default)));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -153,8 +152,7 @@ public class ForecastFragment extends Fragment {
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
             String highLowStr;
-            Log.v("BADANGO","Badango - "+PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("unit_key",""));
-            if (Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("unit_key",""))==2) {
+            if (Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_unit_key),getString(R.string.pref_unit_default)))==2) {
                 roundedHigh=(roundedHigh*2)+30;
                 roundedLow=(roundedLow*2)+30;
                 highLowStr = roundedHigh + "/" + roundedLow + "°F";
