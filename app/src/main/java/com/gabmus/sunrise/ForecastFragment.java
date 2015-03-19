@@ -42,8 +42,6 @@ import java.util.List;
 public class ForecastFragment extends Fragment {
 
     protected ArrayAdapter<String> forecastAdapter;
-    protected boolean refreshOnStartup=true;
-    //public String locPref="";
 
     public ForecastFragment() {
     }
@@ -53,10 +51,13 @@ public class ForecastFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        //SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("location_key","");
-        //locPref=pref.getString("location_key","");
-        //Toast.makeText(getActivity(), locPref, Toast.LENGTH_SHORT).show();
         setHasOptionsMenu(true);
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default)));
     }
 
     @Override
@@ -83,10 +84,6 @@ public class ForecastFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
         forecastAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_forecast,R.id.list_item_forecast_textview);
-        if (refreshOnStartup) {
-            new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("location_key",""));
-            refreshOnStartup=false;
-        }
         ListView forecastList = (ListView) rootView.findViewById(R.id.listview_forecast);
         forecastList.setAdapter(forecastAdapter);
 
