@@ -1,6 +1,7 @@
 package com.gabmus.sunrise;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -35,6 +36,8 @@ public class MainActivity extends Activity {
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_settings) {
+            Intent settingsIntent = new Intent(this , SettingsActivity.class);
+            startActivity(settingsIntent);
             return true;
         }
 

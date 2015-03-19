@@ -3,9 +3,11 @@ package com.gabmus.sunrise;
 import android.app.Fragment;
 import android.app.ProgressDialog;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.text.format.Time;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -17,6 +19,7 @@ import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,6 +44,7 @@ public class ForecastFragment extends Fragment {
 
     protected ArrayAdapter<String> forecastAdapter;
     protected boolean refreshOnStartup=true;
+    //public String locPref="";
 
     public ForecastFragment() {
     }
@@ -49,6 +53,10 @@ public class ForecastFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        //SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("location_key","");
+        //locPref=pref.getString("location_key","");
+        //Toast.makeText(getActivity(), locPref, Toast.LENGTH_SHORT).show();
         setHasOptionsMenu(true);
     }
 
@@ -62,7 +70,7 @@ public class ForecastFragment extends Fragment {
     public boolean onOptionsItemSelected(MenuItem item) {
         int id=item.getItemId();
         if (id==R.id.action_refresh) {
-            new FetchForecastTask().execute("95125");
+            new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("location_key",""));
             return true;
         }
         return super.onOptionsItemSelected(item);
@@ -77,7 +85,7 @@ public class ForecastFragment extends Fragment {
 
         forecastAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_forecast,R.id.list_item_forecast_textview);
         if (refreshOnStartup) {
-            new FetchForecastTask().execute("95125");
+            new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString("location_key",""));
             refreshOnStartup=false;
         }
         ListView forecastList = (ListView) rootView.findViewById(R.id.listview_forecast);

@@ -5,4 +5,23 @@
     <string name="action_refresh" translatable="false">[DEBUG] Refresh</string>
     <string name="loading_message">Fetching forecast...</string>
     <string name="title_activity_detail">Details</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <string name="pref_location_label">Location</string>
+    <string name="pref_location_key" translatable="false">location_key</string>
+    <string name="pref_location_default" translatable="false">94024</string>
+
+    <string name="pref_unit_label">Preferred units</string>
+    <string name="pref_unit_key" translatable="false">unit_key</string>
+    <string name="pref_unit_default" translatable="false">Celsius</string>
+
+    <string-array name="unitValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="unitEntries">
+        <item>Celsius</item>
+        <item>Fahrenheit</item>
+    </string-array>
 </resources>

@@ -2,6 +2,13 @@
 <items version="2" >
 
     <item
+        jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
+        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/classes-61fef8502a07de250cc651126b0f5549837bbf11.jar" />
+    </item>
+    <item
         jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/libs/internal_impl-22.0.0.jar"
         jumboMode="false"
         revision="22.0.0"
@@ -9,18 +16,11 @@
         <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/internal_impl-22.0.0-616a6db84fb96bd5579ca3caa60f0003d959e016.jar" />
     </item>
     <item
-        jar="/home/gabmus/Applicazioni Utente/adt-bundle-linux-x86_64-20140702/sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
+        jar="/home/gabmus/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"
         jumboMode="false"
         revision="22.0.0"
         sha1="685d0b2c590447e85284ed84712cb363ba04eff8">
-        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-f047d63be0b625adc1f96f0dedecdbfed3ba8710.jar" />
-    </item>
-    <item
-        jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
-        jumboMode="false"
-        revision="22.0.0"
-        sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
-        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/classes-61fef8502a07de250cc651126b0f5549837bbf11.jar" />
+        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/support-annotations-22.0.0-7914f696dbfc5927ee0cc90dbfb5cd9ff4c883c8.jar" />
     </item>
 
 </items>
