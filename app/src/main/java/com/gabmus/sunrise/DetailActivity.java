@@ -9,10 +9,13 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ShareActionProvider;
 import android.widget.TextView;
 
 
 public class DetailActivity extends Activity {
+
+    private ShareActionProvider mShareActionProvider;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,8 +36,20 @@ public class DetailActivity extends Activity {
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.menu_detail, menu);
+
+        MenuItem menuItemShare = menu.findItem(R.id.menu_item_share);
+        mShareActionProvider=(ShareActionProvider) menuItemShare.getActionProvider();
         return true;
     }
+
+
+    public void setShareIntent(Intent shareIntent) {
+        if (mShareActionProvider != null) {
+
+            mShareActionProvider.setShareIntent(shareIntent);
+        }
+    }
+
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
