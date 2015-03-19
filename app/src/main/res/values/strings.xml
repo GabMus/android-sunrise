@@ -13,7 +13,7 @@
 
     <string name="pref_unit_label">Preferred units</string>
     <string name="pref_unit_key" translatable="false">unit_key</string>
-    <string name="pref_unit_default" translatable="false">Celsius</string>
+    <string name="pref_unit_default" translatable="false">1</string>
 
     <string name="connection_error">Network error. Are you offline?</string>
 

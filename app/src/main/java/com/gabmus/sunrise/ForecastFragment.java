@@ -124,7 +124,10 @@ public class ForecastFragment extends Fragment {
             long roundedHigh = Math.round(high);
             long roundedLow = Math.round(low);
             String highLowStr;
-            if (Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_unit_key),getString(R.string.pref_unit_default)))==2) {
+
+            int prefTemp=Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_unit_key),getString(R.string.pref_unit_default)));
+
+            if (prefTemp==2) {
                 roundedHigh=(roundedHigh*2)+30;
                 roundedLow=(roundedLow*2)+30;
                 highLowStr = roundedHigh + "/" + roundedLow + "°F";
