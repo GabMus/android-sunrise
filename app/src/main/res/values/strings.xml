@@ -15,6 +15,8 @@
     <string name="pref_unit_key" translatable="false">unit_key</string>
     <string name="pref_unit_default" translatable="false">Celsius</string>
 
+    <string name="connection_error">Network error. Are you offline?</string>
+
     <string-array name="unitValues">
         <item>1</item>
         <item>2</item>

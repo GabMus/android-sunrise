@@ -44,6 +44,7 @@ import java.util.List;
 public class ForecastFragment extends Fragment {
 
     protected ArrayAdapter<String> forecastAdapter;
+    SwipeRefreshLayout swipeLayout;
 
     public ForecastFragment() {
     }
@@ -70,14 +71,12 @@ public class ForecastFragment extends Fragment {
 
 
 
-        final SwipeRefreshLayout swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_container);
+        /*final SwipeRefreshLayout */swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_container);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
-                new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_location_key),getString(R.string.pref_location_default)));
-                swipeLayout.setRefreshing(false);
+                new FetchForecastTask().execute(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_location_key), getString(R.string.pref_location_default)));
             }});
-
 
 
         forecastAdapter = new ArrayAdapter<String>(getActivity(),R.layout.list_item_forecast,R.id.list_item_forecast_textview);
@@ -104,10 +103,17 @@ public class ForecastFragment extends Fragment {
 
         @Override
         protected void onPostExecute(String[] rawData) {
-            List<String> forecastData = new ArrayList<String>(Arrays.asList(rawData));
-            forecastAdapter.clear();
-            forecastAdapter.addAll(forecastData);
-            //forecastAdapter.notifyDataSetChanged(); //not necessary: built in the ArrayAdapter class
+            if (rawData==null) {
+                Toast.makeText(getActivity(),R.string.connection_error, Toast.LENGTH_LONG).show();
+                swipeLayout.setRefreshing(false);
+            }
+            else {
+                List<String> forecastData = new ArrayList<String>(Arrays.asList(rawData));
+                forecastAdapter.clear();
+                forecastAdapter.addAll(forecastData);
+                swipeLayout.setRefreshing(false);
+                //forecastAdapter.notifyDataSetChanged(); //not necessary: built in the ArrayAdapter class
+            }
         }
 
         private String getReadableDateString(long time){
