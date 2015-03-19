@@ -38,9 +38,6 @@ import java.util.Arrays;
 import java.util.List;
 
 
-/**
- * A placeholder fragment containing a simple view.
- */
 public class ForecastFragment extends Fragment {
 
     protected ArrayAdapter<String> forecastAdapter;
@@ -71,7 +68,7 @@ public class ForecastFragment extends Fragment {
 
 
 
-        /*final SwipeRefreshLayout */swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_container);
+        swipeLayout = (SwipeRefreshLayout) rootView.findViewById(R.id.refresh_container);
         swipeLayout.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
             @Override
             public void onRefresh() {
@@ -112,7 +109,6 @@ public class ForecastFragment extends Fragment {
                 forecastAdapter.clear();
                 forecastAdapter.addAll(forecastData);
                 swipeLayout.setRefreshing(false);
-                //forecastAdapter.notifyDataSetChanged(); //not necessary: built in the ArrayAdapter class
             }
         }
 
