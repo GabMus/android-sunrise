@@ -61,7 +61,6 @@ public class MainActivity extends Activity {
                 if (addresses != null && !addresses.isEmpty()) {
                     Address address = addresses.get(0);
                     Uri geotag = Uri.parse("geo:"+Double.toString(address.getLatitude())+","+Double.toString(address.getLongitude())+"?z=11");
-                    Toast.makeText(this, geotag.toString(), Toast.LENGTH_SHORT).show();
                     Intent mapIntent = new Intent(Intent.ACTION_VIEW);
                     mapIntent.setData(geotag);
                     startActivity(mapIntent);
