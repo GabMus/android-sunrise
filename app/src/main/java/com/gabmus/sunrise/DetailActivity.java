@@ -16,6 +16,8 @@ import android.widget.TextView;
 public class DetailActivity extends Activity {
 
     private ShareActionProvider mShareActionProvider;
+    private Intent mShareIntent;
+    public String shareContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,8 +28,12 @@ public class DetailActivity extends Activity {
                     .add(R.id.container, new DetailFragment())
                     .commit();
 
+            mShareIntent = new Intent();
+            mShareIntent.setAction(Intent.ACTION_SEND);
+            mShareIntent.setType("text/plain");
+            mShareIntent.putExtra(Intent.EXTRA_TEXT, shareContent);
 
-            getActionBar().setDisplayHomeAsUpEnabled(true);
+            //getActionBar().setDisplayHomeAsUpEnabled(true); //redundant, not necessary
         }
     }
 
@@ -39,6 +45,9 @@ public class DetailActivity extends Activity {
 
         MenuItem menuItemShare = menu.findItem(R.id.menu_item_share);
         mShareActionProvider=(ShareActionProvider) menuItemShare.getActionProvider();
+        if (mShareActionProvider != null) {
+            mShareActionProvider.setShareIntent(mShareIntent);
+        }
         return true;
     }
 
@@ -59,7 +68,8 @@ public class DetailActivity extends Activity {
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
+        if (id == R.id.menu_item_share) {
+            setShareIntent(mShareIntent);
             return true;
         }
 
@@ -69,7 +79,7 @@ public class DetailActivity extends Activity {
     /**
      * A placeholder fragment containing a simple view.
      */
-    public static class DetailFragment extends Fragment {
+    public class DetailFragment extends Fragment {
 
         public DetailFragment() {
         }
@@ -82,6 +92,7 @@ public class DetailActivity extends Activity {
             Intent intent = getActivity().getIntent();
             if (intent!=null && intent.hasExtra(Intent.EXTRA_TEXT)) {
                 String extra = intent.getStringExtra(Intent.EXTRA_TEXT);
+                shareContent=extra;
                 ((TextView) rootView.findViewById(R.id.detail_text)).setText(extra);
             }
 
