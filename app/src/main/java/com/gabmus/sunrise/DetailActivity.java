@@ -31,7 +31,6 @@ public class DetailActivity extends Activity {
             mShareIntent = new Intent();
             mShareIntent.setAction(Intent.ACTION_SEND);
             mShareIntent.setType("text/plain");
-            mShareIntent.putExtra(Intent.EXTRA_TEXT, shareContent);
 
             //getActionBar().setDisplayHomeAsUpEnabled(true); //redundant, not necessary
         }
@@ -93,6 +92,7 @@ public class DetailActivity extends Activity {
             if (intent!=null && intent.hasExtra(Intent.EXTRA_TEXT)) {
                 String extra = intent.getStringExtra(Intent.EXTRA_TEXT);
                 shareContent=extra;
+                mShareIntent.putExtra(Intent.EXTRA_TEXT, shareContent+" #SunriseApp");
                 ((TextView) rootView.findViewById(R.id.detail_text)).setText(extra);
             }
 
