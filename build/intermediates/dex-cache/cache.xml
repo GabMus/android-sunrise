@@ -2,11 +2,25 @@
 <items version="2" >
 
     <item
+        jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="4b8945fc23a7461c6fdde15753456d64b0a9358b">
+        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/classes-8135bb82cad5ba2f32e1ea002f2be399c38f2cb9.jar" />
+    </item>
+    <item
         jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/support-v4/22.0.0/classes.jar"
         jumboMode="false"
         revision="22.0.0"
         sha1="4e86306289ace4aa0cfec44a05ed2b410d36989d">
         <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/classes-61fef8502a07de250cc651126b0f5549837bbf11.jar" />
+    </item>
+    <item
+        jar="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="22.0.0"
+        sha1="00b0b7233e1ec64acebfac40d4983d32d4712426">
+        <dex dex="/home/gabmus/Sviluppo/AndroidStudioProjects/TestOne/app/build/intermediates/pre-dexed/debug/classes-b9d2cb38437893ceddb723a755601c3075e56c95.jar" />
     </item>
     <item
         jar="/home/gabmus/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/22.0.0/support-annotations-22.0.0.jar"

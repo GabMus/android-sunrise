@@ -17,7 +17,6 @@ public class DetailActivity extends Activity {
 
     private ShareActionProvider mShareActionProvider;
     private Intent mShareIntent;
-    public String shareContent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -91,7 +90,7 @@ public class DetailActivity extends Activity {
             Intent intent = getActivity().getIntent();
             if (intent!=null && intent.hasExtra(Intent.EXTRA_TEXT)) {
                 String extra = intent.getStringExtra(Intent.EXTRA_TEXT);
-                shareContent=extra;
+                String shareContent=extra;
                 mShareIntent.putExtra(Intent.EXTRA_TEXT, shareContent+" #SunriseApp");
                 ((TextView) rootView.findViewById(R.id.detail_text)).setText(extra);
             }
