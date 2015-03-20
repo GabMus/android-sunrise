@@ -17,4 +17,12 @@
         android:defaultValue="1"
     />
 
+    <ListPreference
+        android:title="@string/pref_date_label"
+        android:key="@string/pref_date_key"
+        android:entries="@array/dateEntries"
+        android:entryValues="@array/dateValues"
+        android:defaultValue="1"
+        />
+
 </PreferenceScreen>

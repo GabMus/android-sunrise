@@ -15,7 +15,14 @@
     <string name="pref_unit_key" translatable="false">unit_key</string>
     <string name="pref_unit_default" translatable="false">1</string>
 
+    <string name="pref_date_label">Date format</string>
+    <string name="pref_date_key" translatable="false">date_key</string>
+    <string name="pref_date_default" translatable="false">1</string>
+
     <string name="connection_error">Network error. Are you offline?</string>
+
+    <string name="label_today">Today</string>
+    <string name="label_tomorrow">Tomorrow</string>
 
     <string-array name="unitValues">
         <item>1</item>
@@ -26,4 +33,15 @@
         <item>Celsius</item>
         <item>Fahrenheit</item>
     </string-array>
+
+    <string-array name="dateValues">
+        <item>1</item>
+        <item>2</item>
+    </string-array>
+
+    <string-array name="dateEntries">
+        <item>Day/Month</item>
+        <item>Month/Day</item>
+    </string-array>
+
 </resources>

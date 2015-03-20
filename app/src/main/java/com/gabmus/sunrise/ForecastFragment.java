@@ -115,7 +115,14 @@ public class ForecastFragment extends Fragment {
         private String getReadableDateString(long time){
             // Because the API returns a unix timestamp (measured in seconds),
             // it must be converted to milliseconds in order to be converted to valid date.
-            SimpleDateFormat shortenedDateFormat = new SimpleDateFormat("EEE MMM dd");
+            SimpleDateFormat shortenedDateFormat;
+            int datePref=Integer.parseInt(PreferenceManager.getDefaultSharedPreferences(getActivity()).getString(getString(R.string.pref_date_key),getString(R.string.pref_date_default)));
+            if (datePref==1) {
+                shortenedDateFormat = new SimpleDateFormat("EEEE dd/MM");
+            }
+            else {
+                shortenedDateFormat = new SimpleDateFormat("EEEE MM/dd");
+            }
             return shortenedDateFormat.format(time);
         }
 
@@ -130,10 +137,10 @@ public class ForecastFragment extends Fragment {
             if (prefTemp==2) {
                 roundedHigh=(roundedHigh*2)+30;
                 roundedLow=(roundedLow*2)+30;
-                highLowStr = roundedHigh + "/" + roundedLow + "°F";
+                highLowStr = "Max: " +  roundedHigh + "°F" + "\n" + "Min: " + roundedLow + "°F";
             }
             else {
-                highLowStr = roundedHigh + "/" + roundedLow + "°C";
+                highLowStr = "Max: " +  roundedHigh + "°C" + "\n" + "Min: " + roundedLow + "°C";
             }
             return highLowStr;
         }
@@ -184,9 +191,17 @@ public class ForecastFragment extends Fragment {
                 // "this saturday".
                 long dateTime;
                 // Cheating to convert this to UTC time, which is what we want anyhow
-                dateTime = dayTime.setJulianDay(julianStartDay+i);
-                day = getReadableDateString(dateTime);
-
+                if (i==0) {
+                    day=getString(R.string.label_today);
+                }
+                else if (i==1) {
+                    day=getString(R.string.label_tomorrow);
+                }
+                else {
+                    dateTime = dayTime.setJulianDay(julianStartDay + i);
+                    day = getReadableDateString(dateTime);
+                    day = day.substring(0, 1).toUpperCase() + day.substring(1).toLowerCase();
+                }
                 // description is in a child array called "weather", which is 1 element long.
                 JSONObject weatherObject = dayForecast.getJSONArray(OWM_WEATHER).getJSONObject(0);
                 description = weatherObject.getString(OWM_DESCRIPTION);
@@ -198,7 +213,7 @@ public class ForecastFragment extends Fragment {
                 double low = temperatureObject.getDouble(OWM_MIN);
 
                 highAndLow = formatHighLows(high, low);
-                resultStrs[i] = day + " - " + description + " - " + highAndLow;
+                resultStrs[i] = day + ": " + description + "\n" + highAndLow;
             }
 
             return resultStrs;
