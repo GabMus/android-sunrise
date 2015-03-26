@@ -35,6 +35,12 @@
                 android:name="android.support.PARENT_ACTIVITY"
                 android:value="com.gabmus.sunrise.MainActivity" />
         </activity>
+
+        <provider
+            android:authorities=""
+            android:name=""
     </application>
+
+
 
 </manifest>
