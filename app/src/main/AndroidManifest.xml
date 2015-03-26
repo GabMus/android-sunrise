@@ -37,8 +37,9 @@
         </activity>
 
         <provider
-            android:authorities=""
-            android:name=""
+            android:authorities="com.gabmus.sunrise"
+            android:name=".WeatherProvider"
+            />
     </application>
 
 

@@ -78,7 +78,7 @@ public class WeatherDbHelper extends SQLiteOpenHelper {
                 " UNIQUE (" + WeatherEntry.COLUMN_DATE + ", " +
                 WeatherEntry.COLUMN_LOC_KEY + ") ON CONFLICT REPLACE);";
 
-        sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE);
+        sqLiteDatabase.execSQL(SQL_CREATE_LOCATION_TABLE); //Qua succede la magia, vengono lanciati i comandi sql
         sqLiteDatabase.execSQL(SQL_CREATE_WEATHER_TABLE);
         onCreate(sqLiteDatabase);
     }

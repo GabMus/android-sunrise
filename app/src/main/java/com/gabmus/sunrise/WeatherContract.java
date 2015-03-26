@@ -15,6 +15,8 @@ import android.text.format.Time;
 /**
  * Defines table and column names for the weather database.
  */
+
+//il contratto è teoricamente non necessario, ma permette di avere costanti i valori delle query
 public class WeatherContract {
 
     // The "Content authority" is a name for the entire content provider, similar to the
